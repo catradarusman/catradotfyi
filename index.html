@@ -1,262 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="catra.fyi — onchain generalist. commerce × design × tech culture. Higher on farcaster.">
-<meta property="og:title" content="catra.fyi">
-<meta property="og:description" content="onchain generalist. commerce × design × tech culture.">
-<meta property="og:url" content="https://catra.fyi">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@catradarusman">
-<title>Catra Darusman</title>
-<!-- OG / Social Preview -->
-<meta property="og:title" content="Catra Darusman">
-<meta property="og:description" content="onchain generalist. commerce × design × tech culture.">
-<meta property="og:url" content="https://catra.fyi">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://catra.fyi/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%230e0e0c'/><text x='16' y='21' font-family='monospace' font-size='11' font-weight='500' fill='%2322b584' text-anchor='middle' letter-spacing='0.5'>CTR</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%230e0e0c'/><text x='16' y='21' font-family='monospace' font-size='11' font-weight='500' fill='%2322b584' text-anchor='middle' letter-spacing='0.5'>CTR</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#0e0e0c;
-  --fg:rgba(235,231,220,0.95);
-  --muted:rgba(235,231,220,0.45);
-  --dim:rgba(235,231,220,0.1);
-  --accent:#22b584;
-  --accent-low:rgba(34,181,132,0.07);
-  --mono:'DM Mono',monospace;
-  --sans:'Space Grotesk',sans-serif;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catra Darusman</title>
+  <meta name="description" content="helps creators and founders own their stack. not rent it.">
+  <meta property="og:title" content="Catra Darusman">
+  <meta property="og:description" content="helps creators and founders own their stack. not rent it.">
+  <meta property="og:image" content="https://catra.fyi/og.png">
+  <meta property="og:url" content="https://catra.fyi">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@catradarusman">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0a0a'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='%2322b584'>c</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+    :root {
+      --bg: #0a0a0a;
+      --fg: #ebe7dc;
+      --accent: #22b584;
+      --dim: rgba(235,231,220,0.1);
+      --muted: rgba(235,231,220,0.25);
+      --sub: rgba(235,231,220,0.38);
+      --sans: 'Space Grotesk', sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
 
-body{
-  background:var(--bg);
-  color:var(--fg);
-  font-family:var(--mono);
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
+    html { background: var(--bg); }
 
-.wrap{
-  max-width:780px;
-  margin:0 auto;
-  padding:0 40px;
-  width:100%;
-  flex:1;
-  display:flex;
-  flex-direction:column;
-}
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.8;
+      min-height: 100vh;
+      padding: 32px 0 80px;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* NAV */
-nav{
-  padding:28px 0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:0.5px solid var(--dim);
-}
-.logo{font-size:13px;letter-spacing:0.1em;color:var(--muted);}
-.logo b{color:var(--accent);font-weight:400;}
-.nav-tag{font-size:11px;letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;}
+    .wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-/* HERO */
-.hero{
-  padding:80px 0 64px;
-  border-bottom:0.5px solid var(--dim);
-}
-.hero-headline{
-  font-family:var(--sans);
-  font-size:clamp(36px,5.5vw,56px);
-  font-weight:700;
-  letter-spacing:-0.03em;
-  line-height:1.0;
-  color:var(--fg);
-  margin-bottom:20px;
-}
-.hero-headline .slash{color:var(--accent);font-weight:300;}
-.bio-text{
-  font-size:13px;
-  color:var(--muted);
-  line-height:2.1;
-}
-.bio-text .hi{color:rgba(235,231,220,0.75);}
+    /* NAV */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .nav-l { color: var(--muted); }
+    .nav-l span { color: var(--fg); }
 
-/* CLUSTERS */
-.clusters{display:flex;flex-direction:column;}
-.cluster{border-bottom:0.5px solid var(--dim);}
+    /* HERO */
+    .hero { margin-bottom: 40px; }
 
-.cluster-hd{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 0;
-  cursor:pointer;user-select:none;
-  -webkit-tap-highlight-color:transparent;
-}
-.cluster-hd:hover .cluster-lbl{color:rgba(235,231,220,0.7);}
-.cluster-lbl{
-  font-size:10px;letter-spacing:0.16em;
-  color:var(--muted);text-transform:uppercase;
-  transition:color 0.18s;
-}
-.cluster-ico{
-  font-size:14px;color:var(--muted);
-  transition:transform 0.2s ease;
-  line-height:1;padding:4px;
-}
-.cluster.open .cluster-ico{transform:rotate(45deg);}
-.cluster-body{display:none;flex-direction:column;padding-bottom:6px;}
-.cluster.open .cluster-body{display:flex;}
+    .hero h1 {
+      font-family: var(--sans);
+      font-size: clamp(24px, 5vw, 34px);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--fg);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
 
-/* ITEMS */
-.item{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:13px 0 13px 16px;
-  border-top:0.5px solid var(--dim);
-  text-decoration:none;
-  position:relative;overflow:hidden;
-  min-height:48px;
-  -webkit-tap-highlight-color:transparent;
-}
-.item::before{
-  content:'';position:absolute;
-  left:-100%;top:0;width:100%;height:100%;
-  background:var(--accent-low);
-  transition:left 0.22s ease;
-}
-.item:hover::before{left:0;}
-.item:active::before{left:0;background:rgba(34,181,132,0.12);}
-.item:hover .iname{color:var(--fg);}
-.item:hover .iarr{opacity:1;transform:translateX(0);}
+    .bio-thesis {
+      font-size: 13px;
+      color: rgba(235,231,220,0.55);
+      line-height: 1.9;
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
 
-.il{display:flex;align-items:center;gap:14px;position:relative;z-index:1;min-width:0;}
-.ir{display:flex;align-items:center;gap:10px;position:relative;z-index:1;flex-shrink:0;margin-left:12px;}
+    .bio-text {
+      font-size: 12px;
+      color: var(--sub);
+      line-height: 2.1;
+    }
 
-/* ALL DOTS GREEN */
-.s{width:5px;height:5px;border-radius:50%;flex-shrink:0;background:var(--accent);}
+    .bio-text a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 0.5px solid rgba(34,181,132,0.3);
+      transition: border-color 0.15s;
+    }
+    .bio-text a:hover { border-color: var(--accent); }
 
-.iname{
-  font-size:14px;
-  color:rgba(235,231,220,0.75);
-  letter-spacing:0.02em;
-  transition:color 0.15s;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.isub{
-  font-size:10px;color:var(--muted);
-  letter-spacing:0.07em;text-transform:uppercase;
-  white-space:nowrap;
-}
-.iarr{
-  font-size:12px;color:var(--muted);
-  opacity:0;transform:translateX(-4px);
-  transition:all 0.15s;
-}
+    .bio-status {
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-top: 14px;
+      opacity: 0.85;
+    }
 
-/* FOOTER BLOCKS */
-.foot-blocks{
-  display:grid;grid-template-columns:1fr 1fr;
-  border-top:0.5px solid var(--dim);
-}
-.fb{padding:28px 0;}
-.fb:first-child{border-right:0.5px solid var(--dim);padding-right:28px;}
-.fb:last-child{padding-left:28px;}
-.fb-lbl{
-  font-size:10px;letter-spacing:0.14em;
-  color:var(--muted);text-transform:uppercase;
-  margin-bottom:10px;
-}
-.fb-text{font-size:12px;color:rgba(235,231,220,0.4);line-height:2.0;}
-.fb-text .e{color:rgba(235,231,220,0.75);}
+    /* WORK SECTION */
+    .work-section {
+      border-top: 0.5px solid var(--dim);
+      padding: 28px 0 32px;
+      margin-bottom: 4px;
+    }
 
-/* FOOTER */
-footer{
-  padding:22px 0;
-  border-top:0.5px solid var(--dim);
-  display:flex;justify-content:space-between;align-items:center;
-}
-.foot-l{font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;}
-.foot-r{display:flex;gap:20px;}
-.flink{
-  font-size:10px;color:var(--muted);letter-spacing:0.08em;
-  text-decoration:none;transition:color 0.15s;
-  text-transform:uppercase;padding:4px 0;
-}
-.flink:hover{color:var(--accent);}
+    .work-lbl {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
 
-/* RESPONSIVE */
-@media(max-width:600px){
-  .wrap{padding:0 20px;}
-  nav{padding:22px 0;}
-  .hero{padding:44px 0 36px;}
-  .hero-headline{font-size:32px;}
-  .bio-text{font-size:12px;}
-  .iname{font-size:13px;}
-  .isub{display:none;}
-  .iarr{opacity:1;transform:translateX(0);}
-  .foot-blocks{grid-template-columns:1fr;}
-  .fb:first-child{border-right:none;border-bottom:0.5px solid var(--dim);padding-right:0;padding-bottom:20px;}
-  .fb:last-child{padding-left:0;padding-top:20px;}
-  footer{flex-direction:column;align-items:flex-start;gap:12px;padding:20px 0;}
-}
-@media(min-width:601px) and (max-width:900px){
-  .wrap{padding:0 32px;}
-  .hero-headline{font-size:44px;}
-}
-@media(min-width:901px){
-  .wrap{padding:0 40px;}
-}
-</style>
+    .work-blocks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .wb { padding: 0; }
+    .wb:first-child {
+      padding-right: 28px;
+      border-right: 0.5px solid var(--dim);
+    }
+    .wb:last-child { padding-left: 28px; }
+
+    .wb-lbl {
+      font-size: 9px;
+      color: rgba(235,231,220,0.3);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .wb-text {
+      font-size: 12px;
+      color: var(--sub);
+      line-height: 2.1;
+    }
+
+    .wb-text .we { color: rgba(235,231,220,0.75); }
+
+    .wb-price {
+      font-size: 12px;
+      color: rgba(235,231,220,0.4);
+      letter-spacing: 0.03em;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    .wb-price span {
+      color: rgba(235,231,220,0.75);
+    }
+
+    .wb-cta {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      border-bottom: 0.5px solid rgba(34,181,132,0.3);
+      padding-bottom: 1px;
+      transition: border-color 0.15s;
+    }
+    .wb-cta:hover { border-color: var(--accent); }
+
+    /* CLUSTERS */
+    .clusters { margin-bottom: 8px; }
+
+    .cluster { border-top: 0.5px solid var(--dim); }
+
+    .cluster-hd {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 14px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .cluster-hd:hover .cluster-lbl { color: rgba(235,231,220,0.8); }
+
+    .cluster-lbl {
+      font-size: 11px;
+      color: rgba(235,231,220,0.45);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    .cluster-sub {
+      font-size: 10px;
+      color: rgba(235,231,220,0.22);
+      letter-spacing: 0.05em;
+      margin-left: 10px;
+    }
+
+    .cluster-ico {
+      font-size: 14px;
+      color: rgba(235,231,220,0.2);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .cluster-ico.open { transform: rotate(45deg); }
+
+    .cluster-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+    .cluster-body.open { max-height: 700px; }
+
+    /* ITEMS */
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 0.5px solid rgba(235,231,220,0.05);
+      text-decoration: none;
+      color: inherit;
+    }
+    .item:last-child { border-bottom: none; margin-bottom: 10px; }
+
+    .il { display: flex; align-items: center; gap: 10px; }
+
+    .s {
+      width: 5px;
+      height: 5px;
+      background: rgba(235,231,220,0.2);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .item.featured .s { background: var(--accent); }
+
+    .iname {
+      font-size: 12px;
+      color: rgba(235,231,220,0.5);
+      transition: color 0.15s;
+    }
+    .item.featured .iname { color: rgba(235,231,220,0.75); }
+    .item:hover .iname { color: rgba(235,231,220,0.85); }
+
+    .ir { display: flex; align-items: center; gap: 8px; }
+
+    .isub {
+      font-size: 10px;
+      color: rgba(235,231,220,0.2);
+      letter-spacing: 0.04em;
+    }
+
+    .iarr {
+      font-size: 11px;
+      color: rgba(235,231,220,0.2);
+      margin-left: 4px;
+      transition: color 0.15s;
+    }
+    .item:hover .iarr { color: var(--accent); }
+
+    .new-badge {
+      font-size: 9px;
+      color: var(--accent);
+      border: 0.5px solid rgba(34,181,132,0.4);
+      padding: 1px 5px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* FOOT BLOCKS */
+    .foot {
+      border-top: 0.5px solid var(--dim);
+      padding-top: 24px;
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .fb { padding: 20px 0; }
+    .fb:first-child {
+      padding-right: 28px;
+      border-right: 0.5px solid var(--dim);
+    }
+    .fb:last-child { padding-left: 28px; }
+
+    .fb-lbl {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .fb-text {
+      font-size: 12px;
+      color: rgba(235,231,220,0.35);
+      line-height: 2.1;
+    }
+    .fb-text .hi { color: var(--accent); }
+
+    /* CONTACT */
+    .contact {
+      border-top: 0.5px solid var(--dim);
+      padding-top: 20px;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .contact-lbl {
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      margin-right: 4px;
+    }
+
+    .contact a {
+      color: rgba(235,231,220,0.4);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.15s;
+    }
+    .contact a:hover { color: var(--accent); }
+
+    .contact-sep { color: rgba(235,231,220,0.15); }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      body { padding: 24px 0 64px; }
+
+      .hero h1 { font-size: 26px; }
+
+      .work-blocks { grid-template-columns: 1fr; }
+      .wb:first-child {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 0.5px solid var(--dim);
+        padding-bottom: 24px;
+        margin-bottom: 24px;
+      }
+      .wb:last-child { padding-left: 0; }
+
+      .foot { grid-template-columns: 1fr; }
+      .fb:first-child {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 0.5px solid var(--dim);
+        padding-bottom: 20px;
+      }
+      .fb:last-child { padding-left: 0; }
+
+      .cluster-sub { display: none; }
+    }
+  </style>
 </head>
 <body>
-
 <div class="wrap">
 
-  <nav>
-    <div class="logo">catra<b>.fyi</b></div>
-    <div class="nav-tag">Jakarta · IDN</div>
-  </nav>
+  <div class="nav">
+    <div class="nav-l">catra<span>.fyi</span></div>
+    <div>Jakarta · IDN</div>
+  </div>
 
-  <section class="hero">
-    <h1 class="hero-headline">NORMALCY IS<br>A COMMODITY<span class="slash">.</span></h1>
-    <p class="bio-text">
-      onchain generalist. <span class="hi">commerce × design × tech culture.</span><br>
-      <a href="https://aimhigher.net" target="_blank" rel="noopener" style="color:rgba(235,231,220,0.75);text-decoration:none;border-bottom:0.5px solid rgba(34,181,132,0.4);padding-bottom:1px;transition:border-color 0.15s;">Higher</a> contributor on farcaster. product and community builder.<br>
-      coordination failures → frameworks // ideas → shipped products.
+  <div class="hero">
+    <h1>NORMALCY IS<br>A COMMODITY.</h1>
+
+    <p class="bio-thesis">
+      helps creators and founders own their stack.<br>
     </p>
-  </section>
+
+    <p class="bio-text">
+      builds ownership infrastructure for creators and founders.<br>
+      <a href="https://aimhigher.net" target="_blank" rel="noopener">Higher</a> builder on farcaster. workshop facilitator. protocol thinker.<br>
+      coordination failures → frameworks. ideas → shipped products.
+    </p>
+
+    <p class="bio-status">open to the right collab.</p>
+  </div>
+
+  <div class="work-section" id="work">
+    <div class="work-lbl">work</div>
+    <div class="work-blocks">
+
+      <div class="wb">
+        <div class="wb-lbl">sprint workshop</div>
+        <div class="wb-text">
+          2-day design sprint format.<br>
+          for founders who need to move fast<br>
+          and build something they <span class="we">own.</span>
+        </div>
+        <div class="wb-price">starts at <span>US$2,000</span></div>
+        <a class="wb-cta" href="mailto:catradarusman@pm.me?subject=Sprint Workshop Inquiry">→ get in touch</a>
+      </div>
+
+      <div class="wb">
+        <div class="wb-lbl">sovereignty mentoring</div>
+        <div class="wb-text">
+          class, speaking, or 1:1 sessions<br>
+          for creators building their<br>
+          monetization <span class="we">OS.</span>
+        </div>
+        <div class="wb-price">starts at <span>US$500</span></div>
+        <a class="wb-cta" href="mailto:catradarusman@pm.me?subject=Mentoring Inquiry">→ get in touch</a>
+      </div>
+
+    </div>
+  </div>
 
   <div class="clusters">
 
-    <!-- HIGHER -->
-    <div class="cluster open" id="c0">
+    <div class="cluster">
       <div class="cluster-hd" onclick="tog('c0')">
-        <span class="cluster-lbl">Higher</span>
-        <span class="cluster-ico">+</span>
+        <div><span class="cluster-lbl">Higher</span><span class="cluster-sub">6 projects · community & protocol</span></div>
+        <span class="cluster-ico" id="ic0">+</span>
       </div>
-      <div class="cluster-body">
+      <div class="cluster-body" id="c0">
+        <a class="item featured" href="https://farcaster.xyz/~/channel/higher-athletics/" target="_blank" rel="noopener">
+          <div class="il"><div class="s"></div><div class="iname">Higher Athletics</div></div>
+          <div class="ir"><span class="isub">weekly challenges · base</span><span class="iarr">↗</span></div>
+        </a>
         <a class="item" href="https://farcaster.xyz/~/channel/higher" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">Higher Onchain</div></div>
           <div class="ir"><span class="isub">farcaster · community</span><span class="iarr">↗</span></div>
-        </a>
-        <a class="item" href="https://farcaster.xyz/~/channel/higher-athletics/" target="_blank" rel="noopener">
-          <div class="il"><div class="s"></div><div class="iname">Higher Athletics</div></div>
-          <div class="ir"><span class="isub">onchain fitness · base</span><span class="iarr">↗</span></div>
         </a>
         <a class="item" href="https://farcaster.xyz/~/channel/higherfm/" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">Higher FM</div></div>
           <div class="ir"><span class="isub">radio · community</span><span class="iarr">↗</span></div>
         </a>
-        <a class="item" href="https://github.com/catradarusman/higher-network-skill" target="_blank" rel="noopener">
+        <a class="item featured" href="https://github.com/catradarusman/higher-network-skill" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">higher-network-skill.md</div></div>
           <div class="ir"><span class="isub">ai skill · open source</span><span class="iarr">↗</span></div>
         </a>
@@ -271,14 +453,13 @@ footer{
       </div>
     </div>
 
-    <!-- TOOLS -->
-    <div class="cluster" id="c1">
+    <div class="cluster">
       <div class="cluster-hd" onclick="tog('c1')">
-        <span class="cluster-lbl">Tools</span>
-        <span class="cluster-ico">+</span>
+        <div><span class="cluster-lbl">Tools</span><span class="cluster-sub">2 tools · miniapp & AI</span></div>
+        <span class="cluster-ico" id="ic1">+</span>
       </div>
-      <div class="cluster-body">
-        <a class="item" href="https://press-tool.netlify.app/" target="_blank" rel="noopener">
+      <div class="cluster-body" id="c1">
+        <a class="item featured" href="https://press-tool.netlify.app/" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">PRESS</div></div>
           <div class="ir"><span class="isub">tweet tool · miniapp</span><span class="iarr">↗</span></div>
         </a>
@@ -289,32 +470,34 @@ footer{
       </div>
     </div>
 
-    <!-- SOVEREIGNTY -->
-    <div class="cluster" id="c2">
+    <div class="cluster">
       <div class="cluster-hd" onclick="tog('c2')">
-        <span class="cluster-lbl">Sovereignty</span>
-        <span class="cluster-ico">+</span>
+        <div><span class="cluster-lbl">Sovereignty</span><span class="cluster-sub">creator consulting · RENTLESS</span></div>
+        <span class="cluster-ico" id="ic2">+</span>
       </div>
-      <div class="cluster-body">
-        <a class="item" href="https://rentless.wtf/" target="_blank" rel="noopener">
+      <div class="cluster-body" id="c2">
+        <a class="item featured" href="https://rentless.wtf/" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">RENTLESS</div></div>
           <div class="ir"><span class="isub">creator consulting</span><span class="iarr">↗</span></div>
+        </a>
+        <a class="item" href="#" target="_blank" rel="noopener">
+          <div class="il"><div class="s"></div><div class="iname">SOVEREIGN STACK<span class="new-badge">soon</span></div></div>
+          <div class="ir"><span class="isub">6 AI skills · open source</span><span class="iarr">↗</span></div>
         </a>
       </div>
     </div>
 
-    <!-- COMMUNITY -->
-    <div class="cluster" id="c3">
+    <div class="cluster">
       <div class="cluster-hd" onclick="tog('c3')">
-        <span class="cluster-lbl">Community</span>
-        <span class="cluster-ico">+</span>
+        <div><span class="cluster-lbl">Community</span><span class="cluster-sub">3 projects · Jakarta & onchain</span></div>
+        <span class="cluster-ico" id="ic3">+</span>
       </div>
-      <div class="cluster-body">
+      <div class="cluster-body" id="c3">
         <a class="item" href="https://x.com/dago_dao" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">Dago DAO</div></div>
           <div class="ir"><span class="isub">onchain community</span><span class="iarr">↗</span></div>
         </a>
-        <a class="item" href="https://www.instagram.com/captawonjkt/" target="_blank" rel="noopener">
+        <a class="item featured" href="https://www.instagram.com/captawonjkt/" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">Cap Tawon JKT</div></div>
           <div class="ir"><span class="isub">softball · jakarta</span><span class="iarr">↗</span></div>
         </a>
@@ -325,13 +508,12 @@ footer{
       </div>
     </div>
 
-    <!-- ART & MUSIC -->
-    <div class="cluster" id="c4">
+    <div class="cluster">
       <div class="cluster-hd" onclick="tog('c4')">
-        <span class="cluster-lbl">Art & Music</span>
-        <span class="cluster-ico">+</span>
+        <div><span class="cluster-lbl">Art & Music</span><span class="cluster-sub">3 projects · onchain & production</span></div>
+        <span class="cluster-ico" id="ic4">+</span>
       </div>
-      <div class="cluster-body">
+      <div class="cluster-body" id="c4">
         <a class="item" href="https://highlight.xyz/mint/base:0x4428bE530724B5ee47E4Cb0061f77024933a4dc3" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">Sleeves</div></div>
           <div class="ir"><span class="isub">art project · base</span><span class="iarr">↗</span></div>
@@ -347,18 +529,17 @@ footer{
       </div>
     </div>
 
-    <!-- WRITING -->
-    <div class="cluster" id="c5">
+    <div class="cluster">
       <div class="cluster-hd" onclick="tog('c5')">
-        <span class="cluster-lbl">Writing</span>
-        <span class="cluster-ico">+</span>
+        <div><span class="cluster-lbl">Writing</span><span class="cluster-sub">2 · essays & voice archive</span></div>
+        <span class="cluster-ico" id="ic5">+</span>
       </div>
-      <div class="cluster-body">
+      <div class="cluster-body" id="c5">
         <a class="item" href="https://paragraph.com/@catra" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">Paragraph</div></div>
           <div class="ir"><span class="isub">essays · publication</span><span class="iarr">↗</span></div>
         </a>
-        <a class="item" href="https://github.com/catradarusman/catra.md" target="_blank" rel="noopener">
+        <a class="item featured" href="https://github.com/catradarusman/catra.md" target="_blank" rel="noopener">
           <div class="il"><div class="s"></div><div class="iname">catra.md</div></div>
           <div class="ir"><span class="isub">voice · 3833 tweets</span><span class="iarr">↗</span></div>
         </a>
@@ -367,12 +548,12 @@ footer{
 
   </div>
 
-  <div class="foot-blocks">
+  <div class="foot">
     <div class="fb">
       <div class="fb-lbl">now</div>
       <div class="fb-text">
-        full-time <span class="e">web3.</span><br>
-        building inside <span class="e">Higher.</span><br>
+        full-time web3.<br>
+        building inside Higher.<br>
         open to the right collab.
       </div>
     </div>
@@ -381,27 +562,31 @@ footer{
       <div class="fb-text">
         ownership over the audience.<br>
         sovereignty over scale.<br>
-        <span class="e">Higher</span> together.
+        <span class="hi">Higher</span> together.
       </div>
     </div>
   </div>
 
-  <footer>
-    <div class="foot-l">contact :</div>
-    <div class="foot-r">
-      <a class="flink" href="https://farcaster.xyz/catra.eth" target="_blank" rel="noopener">farcaster</a>
-      <a class="flink" href="https://x.com/catradarusman" target="_blank" rel="noopener">x</a>
-      <a class="flink" href="mailto:catradarusman@pm.me">email</a>
-    </div>
-  </footer>
+  <div class="contact">
+    <span class="contact-lbl">contact:</span>
+    <a href="https://farcaster.xyz/catra.eth" target="_blank" rel="noopener">farcaster</a>
+    <span class="contact-sep">·</span>
+    <a href="https://x.com/catradarusman" target="_blank" rel="noopener">x</a>
+    <span class="contact-sep">·</span>
+    <a href="mailto:catradarusman@pm.me">email</a>
+  </div>
 
 </div>
 
 <script>
-function tog(id){
-  document.getElementById(id).classList.toggle('open');
-}
+  function tog(id) {
+    var b = document.getElementById(id);
+    var n = id.replace('c', '');
+    var ico = document.getElementById('ic' + n);
+    var open = b.classList.contains('open');
+    b.classList.toggle('open', !open);
+    ico.classList.toggle('open', !open);
+  }
 </script>
-
 </body>
 </html>
