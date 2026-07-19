@@ -7,10 +7,12 @@
   <meta name="description" content="helps creators and founders own their stack. not rent it.">
   <meta property="og:title" content="Catra Darusman">
   <meta property="og:description" content="helps creators and founders own their stack. not rent it.">
-  <meta property="og:image" content="https://catra.fyi/og.png">
+  <meta property="og:image" content="https://catra.fyi/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://catra.fyi">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@catradarusman">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0d0d'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='%2322b584' font-family='monospace'>c</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,11 +26,12 @@
       --bg2:    #111111;
       --fg:     #e8e4d9;
       --fg2:    rgba(232,228,217,0.55);
-      --fg3:    rgba(232,228,217,0.45);
-      --fg4:    rgba(232,228,217,0.25);
+      --fg3:    rgba(232,228,217,0.58);
+      --fg4:    rgba(232,228,217,0.42);
       --accent: #22b584;
       --accent2:rgba(34,181,132,0.18);
       --border: rgba(232,228,217,0.1);
+      --hair:   rgba(232,228,217,0.1);
       --mono:   'IBM Plex Mono', monospace;
       --sans:   'IBM Plex Sans', sans-serif;
       --max:    680px;
@@ -45,6 +48,17 @@
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    :focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     /* SCROLLBAR */
@@ -126,7 +140,7 @@
       display: inline-block;
       width: 20px;
       height: 1px;
-      background: var(--fg4);
+      background: var(--hair);
     }
 
     /* ─── HERO ─── */
@@ -275,17 +289,35 @@
       align-items: baseline;
       justify-content: space-between;
       padding: 16px 0;
+      min-height: 48px;
       cursor: pointer;
       user-select: none;
       gap: 12px;
+      list-style: none;
     }
+    .cluster-hd::-webkit-details-marker { display: none; }
     .cluster-hd:hover .cluster-lbl { color: var(--fg); }
+
+    /* toggle icon: '+' rotates 45deg to '×' when open */
+    .cluster-hd::after {
+      content: '+';
+      font-size: 16px;
+      color: var(--fg4);
+      flex-shrink: 0;
+      line-height: 1;
+      font-weight: 300;
+      transition: transform 0.2s ease, color 0.15s;
+    }
+    .cluster[open] > .cluster-hd::after {
+      transform: rotate(45deg);
+      color: var(--accent);
+    }
 
     .cluster-left { display: flex; align-items: baseline; gap: 10px; flex: 1; min-width: 0; }
 
     .cluster-num {
       font-size: 10px;
-      color: var(--fg4);
+      color: var(--fg3);
       letter-spacing: 0.08em;
       flex-shrink: 0;
       min-width: 18px;
@@ -308,26 +340,6 @@
       text-overflow: ellipsis;
     }
 
-    .cluster-ico {
-      font-size: 16px;
-      color: var(--fg4);
-      flex-shrink: 0;
-      line-height: 1;
-      transition: transform 0.2s ease, color 0.15s;
-      font-weight: 300;
-    }
-    .cluster-ico.open {
-      transform: rotate(45deg);
-      color: var(--accent);
-    }
-
-    .cluster-body {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.35s ease;
-    }
-    .cluster-body.open { max-height: 800px; }
-
     /* ─── ITEMS ─── */
     .item {
       display: grid;
@@ -335,7 +347,7 @@
       gap: 12px;
       align-items: center;
       padding: 9px 0;
-      border-top: 1px solid var(--fg4);
+      border-top: 1px solid var(--hair);
       text-decoration: none;
       color: inherit;
       transition: background 0.1s;
@@ -369,7 +381,7 @@
 
     .item-sub {
       font-size: 10px;
-      color: var(--fg4);
+      color: var(--fg3);
       letter-spacing: 0.04em;
       white-space: nowrap;
     }
@@ -421,7 +433,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--fg4);
+      background: var(--hair);
     }
 
     .fb-text {
@@ -476,7 +488,7 @@
       justify-content: space-between;
       align-items: center;
       font-size: 10px;
-      color: var(--fg4);
+      color: var(--fg3);
       letter-spacing: 0.1em;
       flex-wrap: wrap;
       gap: 8px;
@@ -497,6 +509,7 @@
       .wb:first-child { border-bottom: 1px solid var(--border); }
 
       .cluster-sub { display: none; }
+      .item { padding: 13px 0; }
 
       .foot-grid { grid-template-columns: 1fr; }
       .fb:first-child { border-bottom: 1px solid var(--border); }
@@ -593,16 +606,15 @@
   <section>
     <div class="sec-label">$ ls ./projects/</div>
 
-    <div class="cluster">
-      <div class="cluster-hd" onclick="tog('c0')" role="button" aria-expanded="false" aria-controls="c0" style="min-height:48px;">
-        <div class="cluster-left">
+    <details class="cluster" open>
+      <summary class="cluster-hd">
+        <span class="cluster-left">
           <span class="cluster-num">01</span>
           <span class="cluster-lbl">Higher</span>
           <span class="cluster-sub">// 6 projects · community & protocol</span>
-        </div>
-        <span class="cluster-ico" id="ic0">+</span>
-      </div>
-      <div class="cluster-body" id="c0">
+        </span>
+      </summary>
+      <div class="cluster-body">
         <a class="item featured" href="https://farcaster.xyz/~/channel/higher-athletics/" target="_blank" rel="noopener">
           <div class="item-dot"></div>
           <div class="item-name">Higher Athletics</div>
@@ -634,18 +646,17 @@
           <div class="item-right"><span class="item-sub">higher × farcon rome 2026</span><span class="item-arr">↗</span></div>
         </a>
       </div>
-    </div>
+    </details>
 
-    <div class="cluster">
-      <div class="cluster-hd" onclick="tog('c1')" role="button" aria-expanded="false" aria-controls="c1" style="min-height:48px;">
-        <div class="cluster-left">
+    <details class="cluster">
+      <summary class="cluster-hd">
+        <span class="cluster-left">
           <span class="cluster-num">02</span>
           <span class="cluster-lbl">Tools</span>
           <span class="cluster-sub">// 2 tools · miniapp & AI</span>
-        </div>
-        <span class="cluster-ico" id="ic1">+</span>
-      </div>
-      <div class="cluster-body" id="c1">
+        </span>
+      </summary>
+      <div class="cluster-body">
         <a class="item featured" href="https://press-tool.netlify.app/" target="_blank" rel="noopener">
           <div class="item-dot"></div>
           <div class="item-name">PRESS</div>
@@ -657,18 +668,17 @@
           <div class="item-right"><span class="item-sub">ai tool · farcaster</span><span class="item-arr">↗</span></div>
         </a>
       </div>
-    </div>
+    </details>
 
-    <div class="cluster">
-      <div class="cluster-hd" onclick="tog('c2')" role="button" aria-expanded="false" aria-controls="c2" style="min-height:48px;">
-        <div class="cluster-left">
+    <details class="cluster">
+      <summary class="cluster-hd">
+        <span class="cluster-left">
           <span class="cluster-num">03</span>
           <span class="cluster-lbl">Sovereignty</span>
           <span class="cluster-sub">// creator consulting · RENTLESS</span>
-        </div>
-        <span class="cluster-ico" id="ic2">+</span>
-      </div>
-      <div class="cluster-body" id="c2">
+        </span>
+      </summary>
+      <div class="cluster-body">
         <a class="item featured" href="https://rentless.wtf/" target="_blank" rel="noopener">
           <div class="item-dot"></div>
           <div class="item-name">RENTLESS</div>
@@ -680,18 +690,17 @@
           <div class="item-right"><span class="item-sub">6 AI skills · open source</span></div>
         </span>
       </div>
-    </div>
+    </details>
 
-    <div class="cluster">
-      <div class="cluster-hd" onclick="tog('c3')" role="button" aria-expanded="false" aria-controls="c3" style="min-height:48px;">
-        <div class="cluster-left">
+    <details class="cluster">
+      <summary class="cluster-hd">
+        <span class="cluster-left">
           <span class="cluster-num">04</span>
           <span class="cluster-lbl">Community</span>
           <span class="cluster-sub">// 3 projects · Jakarta & onchain</span>
-        </div>
-        <span class="cluster-ico" id="ic3">+</span>
-      </div>
-      <div class="cluster-body" id="c3">
+        </span>
+      </summary>
+      <div class="cluster-body">
         <a class="item" href="https://x.com/dago_dao" target="_blank" rel="noopener">
           <div class="item-dot"></div>
           <div class="item-name">Dago DAO</div>
@@ -708,18 +717,17 @@
           <div class="item-right"><span class="item-sub">rekomendasi · lokal</span><span class="item-arr">↗</span></div>
         </a>
       </div>
-    </div>
+    </details>
 
-    <div class="cluster">
-      <div class="cluster-hd" onclick="tog('c4')" role="button" aria-expanded="false" aria-controls="c4" style="min-height:48px;">
-        <div class="cluster-left">
+    <details class="cluster">
+      <summary class="cluster-hd">
+        <span class="cluster-left">
           <span class="cluster-num">05</span>
-          <span class="cluster-lbl">Art & Music</span>
-          <span class="cluster-sub">// 3 projects · onchain & production</span>
-        </div>
-        <span class="cluster-ico" id="ic4">+</span>
-      </div>
-      <div class="cluster-body" id="c4">
+          <span class="cluster-lbl">Art &amp; Music</span>
+          <span class="cluster-sub">// 3 projects · onchain &amp; production</span>
+        </span>
+      </summary>
+      <div class="cluster-body">
         <a class="item" href="https://highlight.xyz/mint/base:0x4428bE530724B5ee47E4Cb0061f77024933a4dc3" target="_blank" rel="noopener">
           <div class="item-dot"></div>
           <div class="item-name">Sleeves</div>
@@ -736,18 +744,17 @@
           <div class="item-right"><span class="item-sub">production · DJ</span><span class="item-arr">↗</span></div>
         </a>
       </div>
-    </div>
+    </details>
 
-    <div class="cluster">
-      <div class="cluster-hd" onclick="tog('c5')" role="button" aria-expanded="false" aria-controls="c5" style="min-height:48px;">
-        <div class="cluster-left">
+    <details class="cluster">
+      <summary class="cluster-hd">
+        <span class="cluster-left">
           <span class="cluster-num">06</span>
           <span class="cluster-lbl">Writing</span>
-          <span class="cluster-sub">// 2 · essays & voice archive</span>
-        </div>
-        <span class="cluster-ico" id="ic5">+</span>
-      </div>
-      <div class="cluster-body" id="c5">
+          <span class="cluster-sub">// 2 · essays &amp; voice archive</span>
+        </span>
+      </summary>
+      <div class="cluster-body">
         <a class="item" href="https://paragraph.com/@catra" target="_blank" rel="noopener">
           <div class="item-dot"></div>
           <div class="item-name">Paragraph</div>
@@ -759,7 +766,7 @@
           <div class="item-right"><span class="item-sub">voice · 3833 tweets</span><span class="item-arr">↗</span></div>
         </a>
       </div>
-    </div>
+    </details>
 
   </section>
 
@@ -803,17 +810,5 @@
 
 </div>
 
-<script>
-  function tog(id) {
-    var b = document.getElementById(id);
-    var n = id.replace('c', '');
-    var ico = document.getElementById('ic' + n);
-    var hd = b.previousElementSibling;
-    var isOpen = b.classList.contains('open');
-    b.classList.toggle('open', !isOpen);
-    ico.classList.toggle('open', !isOpen);
-    if (hd) hd.setAttribute('aria-expanded', String(!isOpen));
-  }
-</script>
 </body>
 </html>
