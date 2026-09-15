@@ -46,21 +46,22 @@ def parse(raw):
 def render(posts):
     rows = []
     for title, link, when in posts:
+        try:
+            date = datetime.strptime(when, "%b %Y")
+            label = date.strftime("%m / %y")
+            machine_date = date.strftime("%Y-%m")
+        except ValueError:
+            label = when
+            machine_date = ""
+        datetime_attr = f' datetime="{machine_date}"' if machine_date else ""
         rows.append(
-            f'    <a class="item" href="{html.escape(link, quote=True)}" target="_blank" rel="noopener">\n'
-            f'      <div class="item-dot"></div>\n'
-            f'      <div class="item-name">{html.escape(title)}</div>\n'
-            f'      <div class="item-right"><span class="item-sub">{html.escape(when)}</span>'
-            f'<span class="item-arr">↗</span></div>\n'
-            f'    </a>'
+            f'        <a class="writing-link" href="{html.escape(link, quote=True)}" target="_blank" rel="noopener">'
+            f'<time{datetime_attr}>{html.escape(label)}</time><strong>{html.escape(title)}</strong>'
+            f'<span>Read ↗</span></a>'
         )
     rows.append(
-        '    <a class="item" href="https://paragraph.com/@catra" target="_blank" rel="noopener">\n'
-        '      <div class="item-dot"></div>\n'
-        '      <div class="item-name">all essays</div>\n'
-        '      <div class="item-right"><span class="item-sub">paragraph</span>'
-        '<span class="item-arr">↗</span></div>\n'
-        '    </a>'
+        '        <a class="writing-link" href="https://paragraph.com/@catra" target="_blank" rel="noopener">'
+        '<time>Archive</time><strong>All Essays</strong><span>View ↗</span></a>'
     )
     return "\n".join(rows)
 
@@ -77,7 +78,7 @@ def main():
         return 0
 
     page = PAGE.read_text(encoding="utf-8")
-    block = f"<!-- FEED:START -->\n{render(posts)}\n    <!-- FEED:END -->"
+    block = f"<!-- FEED:START -->\n{render(posts)}\n        <!-- FEED:END -->"
     updated, n = re.subn(
         r"<!-- FEED:START -->.*?<!-- FEED:END -->", lambda _: block, page, count=1, flags=re.S
     )
