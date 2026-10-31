@@ -517,10 +517,10 @@
       }
 
       // Year meter under the signal line, counted in Jakarta time.
-      const jkt = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" }));
-      const y = jkt.getFullYear();
+      const parts = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Jakarta", year: "numeric", month: "numeric", day: "numeric" }).formatToParts(new Date()).map((p) => [p.type, Number(p.value)]));
+      const y = parts.year;
       const total = (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0 ? 366 : 365;
-      const doy = Math.floor((new Date(y, jkt.getMonth(), jkt.getDate()) - new Date(y, 0, 1)) / 864e5) + 1;
+      const doy = (Date.UTC(y, parts.month - 1, parts.day) - Date.UTC(y, 0, 1)) / 864e5 + 1;
       document.getElementById("day-count").textContent = doy;
       document.getElementById("day-total").textContent = total;
       document.getElementById("day-meter").style.width = `${(doy / total) * 100}%`;
